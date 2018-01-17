@@ -1,0 +1,26 @@
+{
+  "name": "taller-api",
+  "version": "1.0.0",
+  "description": "api do projeto das empresas de churrasco",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/raivitor/Taller-teste.git"
+  },
+  "author": "Rai Vitor",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/raivitor/Taller-teste/issues"
+  },
+  "homepage": "https://github.com/raivitor/Taller-teste#readme",
+  "dependencies": {
+    "express": "^4.16.2",
+    "express-load": "^1.1.16",
+    "express-validator": "^4.3.0",
+    "mysql": "^2.15.0",
+    "body-parser": "^1.18.2",
+  }
+}
