@@ -3,10 +3,10 @@ module.exports = function (app) {
         var connection = app.persistencia.connectionFactory();
         var userDAO = new app.persistencia.UserDAO(connection);
 
-        userDAO.listar(function (erros, resultados) {
-            if (erros) {
-                console.log('Erro no banco:' + erro);
-                res.status(500).send(erro);
+        userDAO.listar(function (err, resultados) {
+            if (err) {
+                console.log('Erro no banco:' + err);
+                res.status(500).send(err);
             }
             res.status(200).send(resultados);
         });
@@ -26,6 +26,7 @@ module.exports = function (app) {
         var connection = app.persistencia.connectionFactory();
         var userDAO = new app.persistencia.UserDAO(connection);
         var user = req.body;
+        
         userDAO.salvar(user, function (err, resultado) {
             if (err) {
                 console.log('erro no banco ' + err);
@@ -49,11 +50,11 @@ module.exports = function (app) {
             res.status(400).send(erros);
             return;
         }
-        
+
         var connection = app.persistencia.connectionFactory();
         var userDAO = new app.persistencia.UserDAO(connection);
-
         var user = req.body;
+
         userDAO.logar(user, function (err, resultado) {
             if (err) {
                 console.log('erro no banco: ' + err);
@@ -65,5 +66,5 @@ module.exports = function (app) {
             }
         });
         connection.end();
-    })
+    });
 }
