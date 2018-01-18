@@ -5,7 +5,8 @@ function createDBConnection(){
 			host: 'sql132.main-hosting.eu',
 			user: 'u588708737_rai',
 			password: 'churras',
-			database: 'u588708737_churr'
+			database: 'u588708737_churr',
+			multipleStatements: true
 		});
 }
 
