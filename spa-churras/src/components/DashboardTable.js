@@ -5,7 +5,7 @@ import $ from 'jquery';
 export default class DashboardTable extends Component {
     constructor() {
         super();
-        this.state = { companies: [] };
+        this.state = { companies: JSON.parse(localStorage.getItem('companies')) || [] }
     }
 
     componentWillMount() {
@@ -20,6 +20,7 @@ export default class DashboardTable extends Component {
             type: 'get',
             success: function (newsCompanies) {
                 this.setState({ companies: newsCompanies });
+                localStorage.setItem('companies', JSON.stringify(newsCompanies));
             }.bind(this),
             error: function (err) { console.log(err); }
         });
