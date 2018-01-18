@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './css/bootstrap.min.css';
+import './css/CustomStyle.css';
 import './fonts/glyphicons-halflings-regular.eot';
 import Menu from './components/Menu';
 
