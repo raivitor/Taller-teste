@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './css/bootstrap.min.css';
 import './fonts/glyphicons-halflings-regular.eot';
-import LoginBox from './components/LoginBox';
 import Menu from './components/Menu';
 
 class App extends Component {
@@ -12,7 +11,7 @@ class App extends Component {
           <Menu />
         </div>
         <div className="row">
-          <LoginBox />
+          {this.props.children}
         </div>
       </div>
     );

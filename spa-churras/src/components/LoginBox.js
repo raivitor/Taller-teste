@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import FormLogin from './Login';
+import FormLogin from './FormLogin';
 
-export default class Menu extends Component {
+export default class LoginBox extends Component {
 
     render() {
         return (
