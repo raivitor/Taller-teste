@@ -46,7 +46,7 @@ module.exports = function (app) {
         req.assert('password', 'Senha deve ser preenchida').notEmpty();
         var erros = req.validationErrors();
         if (erros) {
-            console.log('Erros de validacao encontrados');
+            console.log('Erros de validacao encontrados: '+erros);
             res.status(400).send(erros);
             return;
         }

@@ -13,5 +13,3 @@ class CompanyDAO {
 module.exports = function () {
     return CompanyDAO;
 }
-
-
