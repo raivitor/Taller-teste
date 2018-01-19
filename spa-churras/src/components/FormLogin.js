@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PubSub from 'pubsub-js';
 import $ from 'jquery';
 import CustomInput from './CustomInput';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import TratadorErros from './TratadorErros';
 import Auth from '../security/Auth';
 
@@ -11,6 +11,7 @@ export default class FormLogin extends Component {
         super(props);
         this.state = { email: "rai@gmail", password: "123", redirect: false }
         this.enviaForm = this.enviaForm.bind(this);
+        Auth.logout();
     }
 
     enviaForm(e) {
@@ -47,16 +48,14 @@ export default class FormLogin extends Component {
                 <CustomInput id="email" type="email" name="email" value={this.state.email} onChange={this.salvaAlteracao.bind(this, 'email')} label="Email" />
                 <CustomInput id="password" type="password" name="password" value={this.state.password} onChange={this.salvaAlteracao.bind(this, 'password')} label="Password" />
                 <div className="form-group">
-                    <div className="col-sm-12">
+                    <div className="col-sm-10">
                         <button type="submit" className="btn btn-primary btn-lg btn-block">Entrar</button>
-                    </div><br /><br />
-                    <div className="col-sm-12">
-                        <button type="submit" className="btn btn-primary btn-lg btn-block">Cadastrar</button>
                     </div>
                 </div>
-                {this.state.redirect && (
-                    <Redirect to='./dashboard' />
-                )}
+                <div className="col-sm-10">
+                    <Link to='/user/new'><button type="submit" className="btn btn-primary btn-lg btn-block">Cadastrar</button></Link>
+                </div>
+                {this.state.redirect && ( <Redirect to='./dashboard' /> )}
             </form>
         )
     }

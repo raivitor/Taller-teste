@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 export default class Menu extends Component {
 
@@ -23,11 +23,11 @@ export default class Menu extends Component {
                             <ul className="nav navbar-nav">
                                 <li><Link to='/dashboard' >Dashboard</Link></li>
                                 <li><Link to='/company/new' >Cadastrar nova empresa</Link></li>
-                                <li><a href="#">Novo pedido</a></li>
-                                <li><a href="#">Minha conta</a></li>
+                                <li><Link to='/order/new' >Novo pedido</Link></li>
+                                <li><Link to='/account/' >Minha conta</Link></li>
                             </ul>
                             <ul className="nav navbar-nav navbar-right">
-                                <li><a href="#">Sair</a></li>
+                                <li><Link to='/' >LOGOUT</Link></li>
                             </ul>
                         </div>
                     </div>
