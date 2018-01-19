@@ -22,7 +22,7 @@ export default class Menu extends Component {
                         <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul className="nav navbar-nav">
                                 <li><Link to='/dashboard' >Dashboard</Link></li>
-                                <li><a href="#">Cadastrar nova empresa</a></li>
+                                <li><Link to='/company/new' >Cadastrar nova empresa</Link></li>
                                 <li><a href="#">Novo pedido</a></li>
                                 <li><a href="#">Minha conta</a></li>
                             </ul>
