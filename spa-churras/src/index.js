@@ -5,6 +5,7 @@ import LoginBox from './components/LoginBox';
 import CompanyBox from './components/CompanyBox';
 import NewCompany from './components/NewCompany';
 import DashboardBox from './components/DashboardBox';
+import NewUser from './components/NewUser';
 import PrivateRoute from './security/PrivateRoute';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import registerServiceWorker from './registerServiceWorker';
@@ -14,6 +15,7 @@ ReactDOM.render((
         <App>
             <Switch>
                 <Route exact path="/" component={LoginBox} />
+                <Route exact path="/user/new" component={NewUser} />
                 <PrivateRoute path="/dashboard" component={DashboardBox} />
                 <PrivateRoute path="/company/new" component={NewCompany} />
                 <PrivateRoute path="/company/:number" component={CompanyBox} />
