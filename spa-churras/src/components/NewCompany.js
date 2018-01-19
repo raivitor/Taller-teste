@@ -43,7 +43,7 @@ export default class NewCompany extends Component {
     render() {
         return (
             <div className="col-md-12">
-                <h3>Dashboard</h3>
+                <h3>Cadastrar nova empresa</h3>
                 <div className="row">
                     <div className="col-md-4 col-md-offset-4">
                         <form className="form-horizontal" onSubmit={this.enviaForm}>
