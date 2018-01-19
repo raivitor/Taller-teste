@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import PubSub from 'pubsub-js';
 import $ from 'jquery';
 import CustomInput from './CustomInput';
+import TratadorErros from './TratadorErros';
 
 export default class NewCompany extends Component {
     constructor() {
@@ -22,6 +24,12 @@ export default class NewCompany extends Component {
             }.bind(this),
             error: function (err) {
                 console.log(err)
+                if (err.status === 400) {
+                    new TratadorErros().publicaErros(err.responseJSON);
+                }
+            },
+            beforeSend: function () {
+                PubSub.publish("limpa-erros", {});
             }
         });
     }
