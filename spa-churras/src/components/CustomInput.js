@@ -11,8 +11,8 @@ export default class CustomInput extends Component {
     render() {
         return (
             <div className="form-group">
-                <label htmlFor={this.props.id} className="col-sm-2 control-label">{this.props.label}</label>
-                <div className="col-sm-10">
+                <label htmlFor={this.props.id} className="col-sm-3 control-label">{this.props.label}</label>
+                <div className="col-sm-6">
                     <input type={this.props.type}
                         name={this.props.name}
                         value={this.props.value}
@@ -21,7 +21,6 @@ export default class CustomInput extends Component {
                         id={this.props.id} />
                     <span id={this.props.id} className="help-block">{this.state.msgErro}</span>
                 </div>
-                
             </div>
         );
     }
