@@ -5,7 +5,7 @@ module.exports = function (app) {
 
         companyDAO.listar(function (err, resultados) {
             if (err) {
-                console.log('Erro no banco:' + erro);
+                console.log('Erro no banco:' + err);
                 res.status(500).send(err);
             }
             res.status(200).send(resultados);
