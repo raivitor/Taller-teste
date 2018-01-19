@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
+import PubSub from 'pubsub-js';
 import $ from 'jquery';
 import CustomInput from './CustomInput';
-
+import { Redirect } from 'react-router-dom';
+import TratadorErros from './TratadorErros';
+import Auth from '../security/Auth';
 
 export default class FormLogin extends Component {
-    constructor(){
-        super();
-        this.state = {email: "", password: ""}
+    constructor(props) {
+        super(props);
+        this.state = { email: "rai@gmail", password: "123", redirect: false }
         this.enviaForm = this.enviaForm.bind(this);
     }
 
@@ -19,18 +22,15 @@ export default class FormLogin extends Component {
             type: 'post',
             data: JSON.stringify({ email: this.state.email, password: this.state.password }),
             success: function (novaListagem) {
-                console.log(novaListagem)
-               // PubSub.publish('atualiza-lista-autores', novaListagem);
-               this.setState({ nome: '', email: '', senha: '' });
+                Auth.authenticate();
+                this.setState({redirect: true})
             }.bind(this),
-            error: function (resposta) {
-                console.log(resposta)
-              /*  if (resposta.status === 400) {
-                    new TratadorErros().publicaErros(resposta.responseJSON);
-                }*/
+            error: function (err) {
+                if (err.status === 400) new TratadorErros().publicaErros(err.responseJSON)
+                else console.log('error: ' + err);
             },
             beforeSend: function () {
-               // PubSub.publish("limpa-erros", {});
+                PubSub.publish("limpa-erros", {});
             }
         });
     }
@@ -54,8 +54,10 @@ export default class FormLogin extends Component {
                         <button type="submit" className="btn btn-primary btn-lg btn-block">Cadastrar</button>
                     </div>
                 </div>
+                {this.state.redirect && (
+                    <Redirect to='./dashboard' />
+                )}
             </form>
         )
     }
-
 }
