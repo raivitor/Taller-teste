@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PubSub from 'pubsub-js';
 
 export default class CustomInput extends Component {
 
@@ -18,9 +19,22 @@ export default class CustomInput extends Component {
                         onChange={this.props.onChange}
                         className="form-control"
                         id={this.props.id} />
+                    <span id={this.props.id} className="help-block">{this.state.msgErro}</span>
                 </div>
-                <span className="error">{this.state.msgErro}</span>
+                
             </div>
         );
+    }
+
+    componentDidMount() {
+        PubSub.subscribe("erro-validacao", function (topico, erro) {
+            if (erro.param === this.props.name) {
+                this.setState({ msgErro: erro.msg });
+            }
+        }.bind(this));
+
+        PubSub.subscribe("limpa-erros", function (topico) {
+            this.setState({ msgErro: '' });
+        }.bind(this));
     }
 }
