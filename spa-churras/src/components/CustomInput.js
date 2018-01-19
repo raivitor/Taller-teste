@@ -17,7 +17,7 @@ export default class CustomInput extends Component {
                         value={this.props.value}
                         onChange={this.props.onChange}
                         className="form-control"
-                        id={this.props.id} placeholder="Password" />
+                        id={this.props.id} />
                 </div>
                 <span className="error">{this.state.msgErro}</span>
             </div>
