@@ -1,21 +1,24 @@
 import React, { Component } from 'react';
 
 export default class CompanyOrderTable extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
-        var produtos = this.props.produtos.map(function (produto) {
+        var produtos = this.props.produtos.map(function (produto, i) {
             return (
-                <span>{""+produto.product_name+" "+produto.quant_product+"x"}<br/></span>
+                <span key={i}>{"" + produto.product_name + " " + produto.quant_product + "x"}<br /></span>
             );
         });
+        if (!this.props.id_order) {
+            return (
+                <tr>
+                    <td align="center" colSpan="3" className="active">Nenhum pedido cadastrado</td>
+                </tr>
+            );
+        }
         return (
-            <tr key={this.props.id_order}>
-                <td>{this.props.id_order}</td>
-                <td>{produtos}</td>
-                <td>Excluir</td>
+            <tr>
+                <td align="center">{this.props.id_order}</td>
+                <td align="center">{produtos}</td>
+                <td align="center"><button type="button" className="btn btn-danger" onClick={() => this.props.deleteOrder(this.props.id_order)}>EXCLUIR</button></td>
             </tr>
         );
     }
