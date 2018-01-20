@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import FormLogin from './FormLogin';
+import LoginForm from './LoginForm';
 
 export default class LoginBox extends Component {
 
@@ -9,7 +9,7 @@ export default class LoginBox extends Component {
                 <h3> Bem vindo!</h3>
                 <div className="row">
                     <div className="col-md-4 col-md-offset-4">
-                        <FormLogin />
+                        <LoginForm />
                     </div>
                 </div>
             </div>

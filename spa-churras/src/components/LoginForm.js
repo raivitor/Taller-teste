@@ -6,7 +6,7 @@ import { Redirect, Link } from 'react-router-dom';
 import TratadorErros from './TratadorErros';
 import Auth from '../security/Auth';
 
-export default class FormLogin extends Component {
+export default class LoginForm extends Component {
     constructor(props) {
         super(props);
         this.state = { email: "rai@gmail", password: "123", redirect: false }
