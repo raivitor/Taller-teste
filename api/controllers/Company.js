@@ -3,12 +3,26 @@ module.exports = function (app) {
         var connection = app.persistencia.connectionFactory();
         var companyDAO = new app.persistencia.CompanyDAO(connection);
 
-        companyDAO.listar(function (err, resultados) {
+        companyDAO.listar(function (err, results) {
             if (err) {
                 console.log('Erro no banco:' + err);
                 res.status(500).send(err);
             }
-            res.status(200).send(resultados);
+            res.status(200).send(results);
+        });
+        connection.end();
+    });
+
+    app.get('/company/:id', function (req, res) {
+        var connection = app.persistencia.connectionFactory();
+        var companyDAO = new app.persistencia.CompanyDAO(connection);
+
+        companyDAO.uniqueCompany(req.params.id, function (err, results) {
+            if (err) {
+                console.log('Erro no banco:' + err);
+                res.status(500).send(err);
+            }
+            res.status(200).send(results);
         });
         connection.end();
     });
