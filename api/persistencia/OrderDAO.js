@@ -3,7 +3,7 @@ class OrderDAO {
         this._connection = connection;
     }
     listar(id_company, callback){
-        sql = 'SELECT o.id_order, p.product_name, pto.quant_product FROM `products_to_order` AS pto LEFT JOIN orders AS o ON pto.fk_id_order = o.id_order LEFT JOIN products AS p ON pto.fk_id_product = p.id_product WHERE o.fk_id_company = ?'
+        let sql = 'SELECT o.id_order, p.product_name, pto.quant_product FROM `products_to_order` AS pto LEFT JOIN orders AS o ON pto.fk_id_order = o.id_order LEFT JOIN products AS p ON pto.fk_id_product = p.id_product WHERE o.fk_id_company = ?'
         this._connection.query(sql, [id_company], callback);
     }
     salvar(order, callback) {

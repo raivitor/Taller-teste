@@ -30,5 +30,6 @@ module.exports = function (app) {
                 res.status(200).json(results);
             }
         });
+        connection.end();
     })
 }
