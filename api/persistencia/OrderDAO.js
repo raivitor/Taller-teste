@@ -15,6 +15,10 @@ class OrderDAO {
         sql = sql.slice(0, -1); // Retira uma virgula que tá no final e não devia estar.
         this._connection.query(sql, [order.id_company], callback);
     }
+    deletar(order_id, callback){
+        let sql = 'DELETE FROM orders WHERE id_order=?';
+        this._connection.query(sql, [order_id], callback);
+    }
 }
 
 module.exports = function () {

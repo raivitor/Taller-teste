@@ -31,5 +31,16 @@ module.exports = function (app) {
             }
         });
         connection.end();
-    })
+    });
+
+    app.delete('/order/:id', function(req, res){
+        var connection = app.persistencia.connectionFactory();
+        var orderDAO = new app.persistencia.OrderDAO(connection);
+
+        orderDAO.deletar(req.params.id, function(err, results){
+            if(err) res.status(500).send(err);
+            res.status(200).json(results);
+        });
+        connection.end();
+    });
 }
