@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PubSub from 'pubsub-js';
 import $ from 'jquery';
-import CustomInput from './CustomInput';
+import CustomInput from '../util/CustomInput';
 import { Redirect, Link } from 'react-router-dom';
-import TratadorErros from './TratadorErros';
+import TratadorErros from '../util/TratadorErros';
 import Auth from '../security/Auth';
 
 export default class LoginForm extends Component {

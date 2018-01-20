@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PubSub from 'pubsub-js';
 import $ from 'jquery';
-import CustomInput from './CustomInput';
-import TratadorErros from './TratadorErros';
+import CustomInput from '../util/CustomInput';
+import TratadorErros from '../util/TratadorErros';
 import ValidatorCNPJ from '../util/ValidatorCNPJ';
 import { Redirect } from 'react-router-dom';
 
