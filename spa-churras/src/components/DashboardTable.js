@@ -32,7 +32,10 @@ export default class DashboardTable extends Component {
                 <tr key={company.id_company}>
                     <td>{company.company_name}</td>
                     <td>{company.company_cnpj}</td>
-                    <td><Link to={"company/"+company.id_company}>{company.numberOrder}</Link></td>
+                    { company.numberOrder>0  ? 
+                        <td><Link to={"company/" + company.id_company}>{company.numberOrder}</Link></td> : 
+                        <td>{company.numberOrder}</td>}
+                    
                 </tr>
             );
         });
