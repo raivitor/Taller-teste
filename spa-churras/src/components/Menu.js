@@ -5,7 +5,7 @@ export default class Menu extends Component {
 
     render() {
         return (
-            <div className="col-md-12">
+            <div className="col-md-8 center">
                 <nav className="navbar navbar-default">
                     <div className="container-fluid">
                         <div className="navbar-header">
