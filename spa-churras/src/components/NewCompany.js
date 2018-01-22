@@ -9,7 +9,7 @@ import { Redirect } from 'react-router-dom';
 export default class NewCompany extends Component {
     constructor() {
         super();
-        this.state = { company_name: "", company_cnpj: "", error: "", redirect: false }
+        this.state = { company_name: "", company_cnpj: "", msg: "", redirect: false }
         this.sendForm = this.sendForm.bind(this);
         this.validateForm = this.validateForm.bind(this);
     }
@@ -18,10 +18,10 @@ export default class NewCompany extends Component {
         e.preventDefault();
         PubSub.publish("limpa-erros", {});
         if (ValidatorCNPJ.validate(this.state.company_cnpj)) {
-            this.setState({ error: "" })
+            this.setState({ msg: "" })
             this.sendForm();
         }
-        else this.setState({ error: "CNPJ Inválido" })
+        else this.setState({ msg: "CNPJ Inválido" })
     }
 
     sendForm() {
@@ -36,7 +36,8 @@ export default class NewCompany extends Component {
             }.bind(this),
             error: function (err) {
                 if (err.status === 400) new TratadorErros().publicaErros(err.responseJSON)
-                else this.setState({ error: err.responseJSON.sqlMessage })
+                else if (err.responseJSON.errno == 1062) this.setState({ msg: "CNPJ já cadastrado, tente outro." })
+                else this.setState({ msg: err.responseJSON.sqlMessage })
             }.bind(this)
         });
     }
@@ -54,7 +55,7 @@ export default class NewCompany extends Component {
                 <div className="row">
                     <div className="col-md-4 col-md-offset-4">
                         <form className="form-horizontal" onSubmit={this.validateForm}>
-                            <h4 className="help-block text-center">{this.state.error}</h4>
+                            <h4 className="help-block text-center">{this.state.msg}</h4>
                             <CustomInput id="company_name" type="text" name="company_name" value={this.state.company_name} onChange={this.salvaAlteracao.bind(this, 'company_name')} label="Nome Fantasia" />
                             <CustomInput id="company_cnpj" type="text" name="company_cnpj" value={this.state.company_cnpj} onChange={this.salvaAlteracao.bind(this, 'company_cnpj')} label="CNPJ" />
                             <div className="form-group">
