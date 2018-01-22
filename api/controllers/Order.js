@@ -1,44 +1,49 @@
 module.exports = function (app) {
     app.post('/order', function (req, res) {
-        var produto = req.body;
+        var order = req.body;
 
         var connection = app.persistencia.connectionFactory();
         var orderDAO = new app.persistencia.OrderDAO(connection);
 
-        orderDAO.salvar(produto, function (err, results) {
+        orderDAO.saveOrder(order.id_company, function (err, results) {
             if (err) {
                 console.log('Erro ao inserir no banco:' + err);
                 res.status(500).send(err);
             }
             else {
-                console.log('Order criada');
-                res.status(201).json(results);
+                orderDAO.saveProducts(order, results.insertId, function (err, results) {
+                    if (err) {
+                        console.log('Erro ao inserir no banco: ' + err);
+                        res.status(500).send(err);
+                    }
+                    res.status(201).json(results);
+                    
+                });
+                connection.end();
             }
         });
-        connection.end();
     });
 
     app.get('/order/:id', function (req, res) {
         var connection = app.persistencia.connectionFactory();
         var orderDAO = new app.persistencia.OrderDAO(connection);
 
-        orderDAO.listar(req.params.id, function(err, results){
-            if(err){
+        orderDAO.list(req.params.id, function (err, results) {
+            if (err) {
                 console.log('Erro no banco:' + err);
                 res.status(500).send(err);
-            } else{
-                res.status(200).json(results);
             }
+            res.status(200).json(results);
         });
         connection.end();
     });
 
-    app.delete('/order/:id', function(req, res){
+    app.delete('/order/:id', function (req, res) {
         var connection = app.persistencia.connectionFactory();
         var orderDAO = new app.persistencia.OrderDAO(connection);
 
-        orderDAO.deletar(req.params.id, function(err, results){
-            if(err) res.status(500).send(err);
+        orderDAO.delete(req.params.id, function (err, results) {
+            if (err) res.status(500).send(err);
             res.status(200).json(results);
         });
         connection.end();
