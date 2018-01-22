@@ -19,5 +19,5 @@ npm start
 
 ### Online
 
-Aplicação - [https://churrascao.esy.es](<https://churrascao.esy.es).<br>
+Aplicação - [http://churrascao.esy.es](<http://churrascao.esy.es).<br>
 api - [https://churras.herokuapp.com](https://churras.herokuapp.com).
