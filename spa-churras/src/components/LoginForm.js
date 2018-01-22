@@ -9,7 +9,7 @@ import Auth from '../security/Auth';
 export default class LoginForm extends Component {
     constructor(props) {
         super(props);
-        this.state = { email: "rai@gmail.com", password: "4", redirect: false }
+        this.state = { email: "rai@gmail.com", password: "4", msg: "", redirect: false }
         this.enviaForm = this.enviaForm.bind(this);
         Auth.logout();
     }
@@ -28,8 +28,9 @@ export default class LoginForm extends Component {
             }.bind(this),
             error: function (err) {
                 if (err.status === 400) new TratadorErros().publicaErros(err.responseJSON)
+                else if(err.status === 401) this.setState({msg: "Email ou senha incorreta."});
                 else console.log('error: ' + err);
-            },
+            }.bind(this),
             beforeSend: function () {
                 PubSub.publish("limpa-erros", {});
             }
@@ -45,6 +46,7 @@ export default class LoginForm extends Component {
     render() {
         return (
             <form className="form-horizontal" onSubmit={this.enviaForm}>
+                <h4 className="help-block text-center">{this.state.msg}</h4>
                 <CustomInput id="email" type="email" name="email" value={this.state.email} onChange={this.salvaAlteracao.bind(this, 'email')} label="Email" />
                 <CustomInput id="password" type="password" name="password" value={this.state.password} onChange={this.salvaAlteracao.bind(this, 'password')} label="Password" />
                 <div className="form-group">
