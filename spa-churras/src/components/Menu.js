@@ -1,38 +1,42 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Auth from '../security/Auth';
+import { Navbar, Nav, NavItem } from 'react-bootstrap';
 
 export default class Menu extends Component {
 
     render() {
         return (
             <div className="col-md-8 center">
-                <nav className="navbar navbar-default">
-                    <div className="container-fluid">
-                        <div className="navbar-header">
-                            <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-                                aria-expanded="false">
-                                <span className="sr-only">Toggle navigation</span>
-                                <span className="icon-bar"></span>
-                                <span className="icon-bar"></span>
-                                <span className="icon-bar"></span>
-                            </button>
+                <Navbar collapseOnSelect>
+                    <Navbar.Header>
+                        <Navbar.Brand>
                             <Link className="navbar-brand" to="/">Churras Garantido!</Link>
-                        </div>
-
-                        <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                            <ul className="nav navbar-nav">
-                                <li><Link to='/dashboard' >Dashboard</Link></li>
-                                <li><Link to='/company/new' >Cadastrar nova empresa</Link></li>
-                                <li><Link to='/order/new' >Novo pedido</Link></li>
-                                <li><Link to='/account/edit' >Minha conta</Link></li>
-                            </ul>
-                            <ul className="nav navbar-nav navbar-right">
-                                <li><Link to='/' onClick={() => Auth.logout()}>LOGOUT</Link></li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
+                        </Navbar.Brand>
+                        <Navbar.Toggle />   
+                    </Navbar.Header>
+                    <Navbar.Collapse>
+                        <Nav>
+                            <NavItem>
+                                <Link to='/dashboard' >Dashboard</Link>
+                            </NavItem>
+                            <NavItem>
+                                <Link to='/company/new' >Cadastrar nova empresa</Link>
+                            </NavItem>
+                            <NavItem>
+                                <Link to='/order/new' >Novo pedido</Link>
+                            </NavItem>
+                            <NavItem>
+                                <Link to='/account/edit' >Minha conta</Link>
+                            </NavItem>
+                        </Nav>
+                        <Nav pullRight>
+                            <NavItem >
+                                <Link to='/' onClick={() => Auth.logout()}>LOGOUT</Link>
+                            </NavItem>
+                        </Nav>
+                    </Navbar.Collapse>
+                </Navbar>
             </div>
         );
     }
