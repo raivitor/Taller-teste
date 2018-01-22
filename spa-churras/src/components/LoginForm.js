@@ -17,14 +17,13 @@ export default class LoginForm extends Component {
     enviaForm(e) {
         e.preventDefault();
         $.ajax({
-            url: 'http://localhost:3000/user/login',
+            url: 'http://localhost:3000/auth/',
             contentType: 'application/json',
             dataType: 'json',
             type: 'post',
             data: JSON.stringify({ email: this.state.email, password: this.state.password }),
-            success: function (user) {
-                console.log(user[0]);
-                Auth.authenticate(user[0].id_user, user[0].email);
+            success: function (result) {
+                Auth.authenticate(result.user.id_user, result.user.email, result.token);
                 this.setState({redirect: true})
             }.bind(this),
             error: function (err) {
