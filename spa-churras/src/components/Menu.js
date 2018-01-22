@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Auth from '../security/Auth';
 
 export default class Menu extends Component {
 
@@ -27,7 +28,7 @@ export default class Menu extends Component {
                                 <li><Link to='/account/edit' >Minha conta</Link></li>
                             </ul>
                             <ul className="nav navbar-nav navbar-right">
-                                <li><Link to='/' >LOGOUT</Link></li>
+                                <li><Link to='/' onClick={() => Auth.logout()}>LOGOUT</Link></li>
                             </ul>
                         </div>
                     </div>
