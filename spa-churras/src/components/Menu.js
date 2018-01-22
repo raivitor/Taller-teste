@@ -11,7 +11,7 @@ export default class Menu extends Component {
                 <Navbar collapseOnSelect>
                     <Navbar.Header>
                         <Navbar.Brand>
-                            <Link className="navbar-brand" to="/">Churras Garantido!</Link>
+                            <Link className="navbar-brand" to="/dashboard">Churras Garantido!</Link>
                         </Navbar.Brand>
                         <Navbar.Toggle />   
                     </Navbar.Header>
