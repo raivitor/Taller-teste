@@ -3,7 +3,7 @@ import PubSub from 'pubsub-js';
 import $ from 'jquery';
 import CustomInput from '../util/CustomInput';
 import TratadorErros from '../util/TratadorErros';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 
 export default class NewUser extends Component {
     constructor() {
@@ -35,8 +35,9 @@ export default class NewUser extends Component {
             }.bind(this),
             error: function (err) {
                 if (err.status === 400) new TratadorErros().publicaErros(err.responseJSON)
-                else console.log('error: ' + err);
-            }
+                else if (err.responseJSON.errno == 1062) this.setState({error: "Email já cadastrado, tente outro."})
+                else console.log(err);
+            }.bind(this)
         });
     }
 
@@ -61,6 +62,9 @@ export default class NewUser extends Component {
                                 <div className="col-sm-10">
                                     <button type="submit" className="btn btn-primary btn-lg btn-block">Cadastrar</button>
                                 </div>
+                            </div>
+                            <div className="col-sm-10">
+                                <Link to='/'><button type="submit" className="btn btn-primary btn-lg btn-block">Voltar</button></Link>
                             </div>
                         </form>
                         {this.state.redirect && (<Redirect to='/' />)}

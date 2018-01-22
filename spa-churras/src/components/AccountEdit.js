@@ -35,8 +35,9 @@ export default class AccountEdit extends Component {
             }.bind(this),
             error: function (err) {
                 if (err.status === 400) new TratadorErros().publicaErros(err.responseJSON)
-                else console.log('error: ' + err);
-            }
+                else if (err.responseJSON.errno == 1062) this.setState({ msg: "Email já cadastrado, tente outro." })
+                else console.log(err);
+            }.bind(this)
         });
     }
 
