@@ -138,7 +138,7 @@ export default class LoginForm extends Component {
                             <option value="">Selecione um produto</option>
                             {products}
                         </select>
-                        <input type="number" className="form-control" min="1" name="quant_product" value={this.state.quant_product} onChange={this.salvaAlteracao.bind(this, 'quant_product')} />
+                        <input type="number" className="form-control" min="1" name="quant_product" value={this.state.quant_product} onChange={this.salvaAlteracao.bind(this, 'quant_product')} placeholder="Quantidade" />
                         <button className="btn btn-default" type="submit" disabled={this.state.id_product && this.state.quant_product ? "" : "disabled"}>Adicionar</button>
                     </div>
                 </form>
