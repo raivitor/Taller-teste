@@ -8,6 +8,7 @@ import DashboardBox from './components/DashboardBox';
 import NewUser from './components/NewUser';
 import NewOrderBox from './components/NewOrderBox';
 import PrivateRoute from './security/PrivateRoute';
+import AccountEdit from './components/AccountEdit';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import registerServiceWorker from './registerServiceWorker';
 
@@ -21,6 +22,7 @@ ReactDOM.render((
                 <PrivateRoute path="/company/new" component={NewCompany} />
                 <PrivateRoute path="/company/:number" component={CompanyBox} />
                 <PrivateRoute path="/order/new" component={NewOrderBox} />
+                <PrivateRoute path="/account/edit" component={AccountEdit} />
             </Switch>
         </App>
     </Router>

@@ -9,7 +9,7 @@ import Auth from '../security/Auth';
 export default class LoginForm extends Component {
     constructor(props) {
         super(props);
-        this.state = { email: "rai@gmail", password: "123", redirect: false }
+        this.state = { email: "rai@gmail.com", password: "4", redirect: false }
         this.enviaForm = this.enviaForm.bind(this);
         Auth.logout();
     }
@@ -22,8 +22,9 @@ export default class LoginForm extends Component {
             dataType: 'json',
             type: 'post',
             data: JSON.stringify({ email: this.state.email, password: this.state.password }),
-            success: function (novaListagem) {
-                Auth.authenticate();
+            success: function (user) {
+                console.log(user[0]);
+                Auth.authenticate(user[0].id_user, user[0].email);
                 this.setState({redirect: true})
             }.bind(this),
             error: function (err) {

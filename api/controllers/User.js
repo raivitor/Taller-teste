@@ -67,4 +67,32 @@ module.exports = function (app) {
         });
         connection.end();
     });
+
+    app.put('/user', function(req, res){
+        req.assert('email', 'Email deve ser preenchido').notEmpty();
+        req.assert('password', 'Senha deve ser preenchida').notEmpty();
+        var erros = req.validationErrors();
+        if (erros) {
+            console.log('Erros de validacao encontrados: ' + erros);
+            res.status(400).send(erros);
+            return;
+        }
+
+        var connection = app.persistencia.connectionFactory();
+        var userDAO = new app.persistencia.UserDAO(connection);
+        var user = req.body;
+        console.log(user);
+        userDAO.update(user, function (err, resultado) {
+            
+            if (err) {
+                console.log('erro no banco: ' + err);
+                res.status(500).send(err);
+            } else {
+                console.log(resultado)
+                console.log('Usuario atualizado');
+                res.status(200).json(user);
+            }
+        });
+        connection.end();
+    })
 }

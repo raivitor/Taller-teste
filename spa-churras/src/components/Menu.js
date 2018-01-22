@@ -24,7 +24,7 @@ export default class Menu extends Component {
                                 <li><Link to='/dashboard' >Dashboard</Link></li>
                                 <li><Link to='/company/new' >Cadastrar nova empresa</Link></li>
                                 <li><Link to='/order/new' >Novo pedido</Link></li>
-                                <li><Link to='/account/' >Minha conta</Link></li>
+                                <li><Link to='/account/edit' >Minha conta</Link></li>
                             </ul>
                             <ul className="nav navbar-nav navbar-right">
                                 <li><Link to='/' >LOGOUT</Link></li>
