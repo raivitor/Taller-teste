@@ -16,7 +16,7 @@ export default class CompanyOrderTable extends Component {
 
     atualizarTabela() {
         $.ajax({
-            url: 'http://localhost:3000/order/' + this.props.id_company,
+            url: 'https://churras.herokuapp.com/order/' + this.props.id_company,
             contentType: 'application/json',
             dataType: 'json',
             type: 'get',
@@ -27,7 +27,7 @@ export default class CompanyOrderTable extends Component {
 
     deleteOrder(id_order) {
         $.ajax({
-            url: 'http://localhost:3000/order/' + id_order,
+            url: 'https://churras.herokuapp.com/order/' + id_order,
             contentType: 'application/json',
             dataType: 'json',
             type: 'delete',

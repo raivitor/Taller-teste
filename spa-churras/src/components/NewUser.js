@@ -25,7 +25,7 @@ export default class NewUser extends Component {
 
     enviarForm() {
         $.ajax({
-            url: 'http://localhost:3000/user/',
+            url: 'https://churras.herokuapp.com/user/',
             contentType: 'application/json',
             dataType: 'json',
             type: 'post',

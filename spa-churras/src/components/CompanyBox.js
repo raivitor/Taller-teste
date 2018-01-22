@@ -15,7 +15,7 @@ export default class CompanyBox extends Component {
 
     getCompany() {
         $.ajax({
-            url: 'http://localhost:3000/company/' + this.props.match.params.number,
+            url: 'https://churras.herokuapp.com/company/' + this.props.match.params.number,
             contentType: 'application/json',
             dataType: 'json',
             type: 'get',

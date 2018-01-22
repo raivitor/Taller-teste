@@ -8,7 +8,7 @@ const Auth = {
         /*
         if (this._isAuthenticated && this._token){
             $.ajax({
-                url: 'http://localhost:3000/auth/verify',
+                url: 'https://churras.herokuapp.com/auth/verify',
                 contentType: 'application/json',
                 dataType: 'json',
                 type: 'post',

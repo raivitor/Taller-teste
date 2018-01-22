@@ -9,7 +9,7 @@ import Auth from '../security/Auth';
 export default class LoginForm extends Component {
     constructor(props) {
         super(props);
-        this.state = { email: "rai@gmail.com", password: "4", msg: "", redirect: false }
+        this.state = { email: "", password: "", msg: "", redirect: false }
         this.enviaForm = this.enviaForm.bind(this);
         Auth.logout();
     }
@@ -17,7 +17,7 @@ export default class LoginForm extends Component {
     enviaForm(e) {
         e.preventDefault();
         $.ajax({
-            url: 'http://localhost:3000/auth/',
+            url: 'https://churras.herokuapp.com/auth/',
             contentType: 'application/json',
             dataType: 'json',
             type: 'post',

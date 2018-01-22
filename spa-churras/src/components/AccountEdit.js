@@ -25,7 +25,7 @@ export default class AccountEdit extends Component {
 
     sendForm() {
         $.ajax({
-            url: 'http://localhost:3000/user/',
+            url: 'https://churras.herokuapp.com/user/',
             contentType: 'application/json',
             dataType: 'json',
             type: 'put',

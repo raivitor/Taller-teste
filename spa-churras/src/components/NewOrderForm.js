@@ -19,7 +19,7 @@ export default class LoginForm extends Component {
 
     getCompanies() {
         $.ajax({
-            url: 'http://localhost:3000/company',
+            url: 'https://churras.herokuapp.com/company',
             contentType: 'application/json',
             dataType: 'json',
             type: 'get',
@@ -33,7 +33,7 @@ export default class LoginForm extends Component {
 
     getProducts() {
         $.ajax({
-            url: 'http://localhost:3000/product',
+            url: 'https://churras.herokuapp.com/product',
             contentType: 'application/json',
             dataType: 'json',
             type: 'get',
@@ -82,7 +82,7 @@ export default class LoginForm extends Component {
             return 0;
         }
         $.ajax({
-            url: 'http://localhost:3000/order',
+            url: 'https://churras.herokuapp.com/order',
             contentType: 'application/json',
             dataType: 'json',
             type: 'post',

@@ -14,7 +14,7 @@ export default class DashboardTable extends Component {
 
     atualizarTabela() {
         $.ajax({
-            url: 'http://localhost:3000/company',
+            url: 'https://churras.herokuapp.com/company',
             contentType: 'application/json',
             dataType: 'json',
             type: 'get',
